@@ -23,7 +23,14 @@ const CheckIcon = ({ className = "w-4 h-4 text-emerald-600 shrink-0 font-bold" }
 );
 
 export default function VahanCRMLanding() {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly');
+    const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | 'dpdpa'>('privacy');
+
+  const openLegalModal = (tab: 'privacy' | 'terms' | 'dpdpa' = 'privacy') => {
+    setLegalModalTab(tab);
+    setLegalModalOpen(true);
+  };
+const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly');
   const [heroSlide, setHeroSlide] = useState<number>(0);
   const [heroProgress, setHeroProgress] = useState<number>(0);
   const [isHeroPaused, setIsHeroPaused] = useState<boolean>(false);
@@ -236,7 +243,7 @@ export default function VahanCRMLanding() {
                   <div className="flex items-center justify-between gap-1 mb-1">
                     <span className={`text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 ${heroSlide === 3 ? 'text-red-600' : 'text-slate-500'}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${heroSlide === 3 ? 'bg-red-600' : 'bg-slate-400'}`} />
-                      04 • 1-CLICK GST & QR
+                      04 • 1-CLICK BILLING & QR
                     </span>
                     <span className="text-[9px] font-mono text-slate-400">DEALERSHIP</span>
                   </div>
@@ -270,7 +277,7 @@ export default function VahanCRMLanding() {
                   </h1>
 
                   <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed font-normal">
-                    Create digital job cards, track spare parts stock, and send GST bills on WhatsApp—designed so anyone on your workshop floor can use it from day one.
+                    Create digital job cards, track spare parts stock, and send digital bills on WhatsApp—designed so anyone on your workshop floor can use it from day one.
                   </p>
 
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
@@ -300,7 +307,7 @@ export default function VahanCRMLanding() {
                     <span>No training required</span>
                     <span className="text-slate-300">•</span>
                     <span className="text-emerald-600 font-bold">✓</span>
-                    <span>100% GST compliant</span>
+                    <span>100% Fast Digital Billing</span>
                   </div>
                 </div>
 
@@ -344,7 +351,7 @@ export default function VahanCRMLanding() {
                           <span>₹300</span>
                         </div>
                         <div className="pt-1 border-t border-slate-200 flex items-center justify-between font-bold text-slate-900">
-                          <span>Total Bill (incl. GST)</span>
+                          <span>Total Bill Amount</span>
                           <span className="text-red-600 font-mono text-sm">₹1,480</span>
                         </div>
                       </div>
@@ -366,7 +373,7 @@ export default function VahanCRMLanding() {
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                         Stock updated in real time
                       </span>
-                      <span className="font-mono text-slate-700 font-medium">GST Invoice Ready</span>
+                      <span className="font-mono text-slate-700 font-medium">Digital Invoice Ready</span>
                     </div>
                   </div>
 
@@ -623,7 +630,7 @@ export default function VahanCRMLanding() {
                   </div>
 
                   <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.08]">
-                    Digital Job Cards, Fast GST Billing &<br />
+                    Digital Job Cards, Fast Digital Billing &<br />
                     <span className="text-red-600">Service Reminders in One Place.</span>
                   </h1>
 
@@ -685,7 +692,7 @@ export default function VahanCRMLanding() {
                         <div className="flex items-center gap-2.5">
                           <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 font-bold text-sm flex items-center justify-center border border-amber-200">2</div>
                           <div>
-                            <div className="font-bold text-slate-900 text-xs">Instant GST Tax Invoice</div>
+                            <div className="font-bold text-slate-900 text-xs">Instant Digital Invoice</div>
                             <div className="text-[10px] text-slate-500">HSN auto-coded parts + labour split</div>
                           </div>
                         </div>
@@ -1136,15 +1143,15 @@ export default function VahanCRMLanding() {
                     {/* Category 2 */}
                     <tr className="bg-slate-50 font-bold text-slate-900 text-xs">
                       <td colSpan={3} className="py-2.5 px-4 sm:px-6 text-emerald-700 font-mono uppercase tracking-wider">
-                        2. GST Invoicing, Payments & WhatsApp Retention
+                        2. Digital Invoicing, Payments & WhatsApp Retention
                       </td>
                     </tr>
                     <tr className="hover:bg-slate-50/70 transition-colors">
                       <td className="py-3 px-4 sm:px-6 font-semibold text-slate-900">
-                        GST Billing & Dues Ledger <span className="block text-[10px] font-mono text-slate-400">/billing</span>
+                        Billing & Dues Ledger <span className="block text-[10px] font-mono text-slate-400">/billing</span>
                       </td>
                       <td className="py-3 px-4 sm:px-6 text-slate-600 text-xs">
-                        100% GST compliant tax invoices, HSN/SAC codes, partial & split payments (Cash, Card, UPI, Credit), outstanding dues tracking.
+                        Professional digital invoices, custom tax rules, partial & split payments (Cash, Card, UPI, Credit), outstanding dues tracking.
                       </td>
                       <td className="py-3 px-4 sm:px-6 text-right font-mono font-bold text-emerald-700">
                         ✓ Unlimited
@@ -1268,7 +1275,7 @@ export default function VahanCRMLanding() {
                         Reports & Tax Analytics <span className="block text-[10px] font-mono text-slate-400">/reports</span>
                       </td>
                       <td className="py-3 px-4 sm:px-6 text-slate-600 text-xs">
-                        Gross revenue, parts profit margins, labor earnings, GST report export for your CA / Tally in 1-click.
+                        Gross revenue, parts profit margins, labor earnings, sales ledger export for your CA / Tally in 1-click.
                       </td>
                       <td className="py-3 px-4 sm:px-6 text-right font-mono font-bold text-emerald-700">
                         ✓ Unlimited
@@ -1574,7 +1581,7 @@ export default function VahanCRMLanding() {
                   <div className="space-y-1 text-[11px]">
                     <div className="text-slate-300">• 54 Daily Job Invoices</div>
                     <div className="text-slate-300">• HSN 8708 Spares &amp; SAC 9987 Labor</div>
-                    <div className="text-emerald-400 font-bold">• 100% GSTR-1 &amp; Input Tax Reconciled</div>
+                    <div className="text-emerald-400 font-bold">• 100% Daily Accounts &amp; Ledger Reconciled</div>
                   </div>
                 </div>
 
@@ -1683,7 +1690,7 @@ export default function VahanCRMLanding() {
                 <span className="text-red-600 group-open:rotate-180 transition-transform duration-200 font-bold">&darr;</span>
               </summary>
               <p className="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed border-t border-slate-100 pt-3">
-                Zero app downloads for car owners. Everything is delivered natively through official WhatsApp: vehicle ready notifications, before/after scratch inspection photos, GST tax invoices, and 1-click UPI payment links.
+                Zero app downloads for car owners. Everything is delivered natively through official WhatsApp: vehicle ready notifications, before/after scratch inspection photos, digital tax invoices, and 1-click UPI payment links.
               </p>
             </details>
 
@@ -1703,7 +1710,7 @@ export default function VahanCRMLanding() {
                 <span className="text-red-600 group-open:rotate-180 transition-transform duration-200 font-bold">&darr;</span>
               </summary>
               <p className="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed border-t border-slate-100 pt-3">
-                You don't need expensive POS terminals. A simple ₹8,000 Android phone or ₹12,000 tablet on the workshop floor, plus an optional standard Bluetooth thermal printer (₹2,500) for gate passes or any standard desktop printer for GST tax invoices is all you need.
+                You don't need expensive POS terminals. A simple ₹8,000 Android phone or ₹12,000 tablet on the workshop floor, plus an optional standard Bluetooth thermal printer (₹2,500) for gate passes or any standard desktop printer for customer bills is all you need.
               </p>
             </details>
 
@@ -1820,19 +1827,163 @@ export default function VahanCRMLanding() {
             <div className="flex items-center gap-2">
               <span>&copy; 2026 VahanCRM Technologies Pvt. Ltd.</span>
               <span className="text-slate-700">•</span>
-              <span>100% GST Compliant</span>
+              <span>100% DPDPA 2023 Compliant</span>
               <span className="text-slate-700">•</span>
               <span>AWS Mumbai (ap-south-1)</span>
             </div>
             <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-slate-300 transition-colors">GST Compliance</a>
+              <button onClick={() => openLegalModal("privacy")} className="hover:text-slate-300 transition-colors cursor-pointer bg-transparent border-0 p-0 text-[11px] text-slate-500">Privacy Policy</button>
+              <button onClick={() => openLegalModal("terms")} className="hover:text-slate-300 transition-colors cursor-pointer bg-transparent border-0 p-0 text-[11px] text-slate-500">Terms of Service</button>
+              <button onClick={() => openLegalModal("dpdpa")} className="hover:text-slate-300 transition-colors cursor-pointer bg-transparent border-0 p-0 text-[11px] text-slate-500">DPDPA Compliance</button>
             </div>
           </div>
 
         </div>
       </footer>
+
+    
+      {/* ========================================== */}
+      {/* DPDPA 2023 PRIVACY & LEGAL MODAL DIALOG   */}
+      {/* ========================================== */}
+      {legalModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10" role="dialog" aria-modal="true">
+          <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity" onClick={() => setLegalModalOpen(false)} />
+          <div className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50/90">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-red-600/10 border border-red-600/20 flex items-center justify-center text-red-600 font-black text-sm">
+                  §
+                </div>
+                <div>
+                  <h2 className="text-lg font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Legal &amp; Statutory Documentation
+                  </h2>
+                  <p className="text-xs text-slate-500 font-mono">
+                    Compliant with Digital Personal Data Protection Act (DPDPA) 2023 &amp; DPDP Rules 2025
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setLegalModalOpen(false)}
+                className="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 flex items-center justify-center transition-colors"
+                aria-label="Close dialog"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="flex border-b border-slate-200 bg-white px-6 pt-2 gap-2 text-xs font-bold overflow-x-auto">
+              <button
+                onClick={() => setLegalModalTab('privacy')}
+                className={`px-4 py-2.5 border-b-2 whitespace-nowrap transition-colors ${legalModalTab === 'privacy' ? 'border-red-600 text-red-600 font-bold' : 'border-transparent text-slate-600 hover:text-slate-900 font-medium'}`}
+              >
+                Privacy Policy (DPDPA 2023)
+              </button>
+              <button
+                onClick={() => setLegalModalTab('terms')}
+                className={`px-4 py-2.5 border-b-2 whitespace-nowrap transition-colors ${legalModalTab === 'terms' ? 'border-red-600 text-red-600 font-bold' : 'border-transparent text-slate-600 hover:text-slate-900 font-medium'}`}
+              >
+                Terms of Service
+              </button>
+              <button
+                onClick={() => setLegalModalTab('dpdpa')}
+                className={`px-4 py-2.5 border-b-2 whitespace-nowrap transition-colors ${legalModalTab === 'dpdpa' ? 'border-red-600 text-red-600 font-bold' : 'border-transparent text-slate-600 hover:text-slate-900 font-medium'}`}
+              >
+                DPDPA 2023 Statutory Readiness
+              </button>
+            </div>
+
+            <div className="overflow-y-auto px-6 py-6 text-sm text-slate-700 space-y-6 leading-relaxed max-h-[60vh] divide-y divide-slate-100">
+              {legalModalTab === 'privacy' && (
+                <div className="space-y-5">
+                  <div className="bg-emerald-50 border border-emerald-200/70 rounded-xl p-4 text-xs text-emerald-900 flex items-start gap-3">
+                    <div>
+                      <p className="font-bold">Indian Statutory Notice under Section 5, Digital Personal Data Protection Act, 2023</p>
+                      <p className="mt-0.5 text-emerald-800">This Privacy Policy informs Data Principals of the specific personal data collected, lawful processing purposes, storage limits, and legal redressal channels.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">1. Identity of Data Fiduciary &amp; Data Processor</h3>
+                    <p><strong>VahanCRM Technologies Pvt. Ltd.</strong> acts as a Data Fiduciary regarding user accounts, and operates as a Data Processor on behalf of partner automobile workshops operating digital job cards.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">2. Categories of Personal Data Collected</h3>
+                    <p>We process only minimal digital personal data strictly required to fulfill automotive repair, service tracking, and delivery notifications:</p>
+                    <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600 pl-2">
+                      <li><strong>Contact Identifiers:</strong> Customer full name, phone number (WhatsApp-enabled), and optional email.</li>
+                      <li><strong>Vehicle Registry Telematics:</strong> Vehicle Registration Number (VRN), Make, Model, Fuel Type, and Odometer reading.</li>
+                      <li><strong>Visual Inspection Records:</strong> Timestamped 360° intake walkaround photographs highlighting pre-existing scratches and dents.</li>
+                      <li><strong>Commercial Records:</strong> Itemized parts list, labor charges, billing amounts, and UPI transaction reference IDs.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">3. Statutory Rights of the Data Principal</h3>
+                    <p>Under Chapter III (Sections 11–14) of DPDPA 2023, you hold rights to Access Summary of personal data, Correction &amp; Erasure, Withdrawal of consent via WhatsApp <strong>"STOP"</strong>, and Nomination.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">4. 100% Indian Data Sovereignty</h3>
+                    <p>100% of VahanCRM databases and vehicle intake logs are hosted locally within India on AWS Mumbai region (<code>ap-south-1</code>) with AES-256 GCM encryption at rest.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">5. Data Protection Officer (DPO)</h3>
+                    <p>Designated Officer: Murali D (privacy@vahancrm.in • +91 97913 88549). Statutory resolution timeframe: within 7 working days.</p>
+                  </div>
+                </div>
+              )}
+
+              {legalModalTab === 'terms' && (
+                <div className="space-y-5 pt-2">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">1. Workshop SaaS Subscription</h3>
+                    <p>VahanCRM provides a specialized cloud Workshop Operating System billed at the agreed flat rate (₹999/month or ₹9,999/year) without per-job-card surcharges.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">2. Data Ownership &amp; Privacy</h3>
+                    <p>All job cards, customer phone lists, parts stock ledgers, and vehicle scratch photographs recorded by the workshop remain the exclusive property of the workshop. VahanCRM never sells or monetizes your garage database.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2">3. 99.98% Uptime SLA</h3>
+                    <p>We commit to 99.98% platform availability with maintenance scheduled outside active Indian garage hours.</p>
+                  </div>
+                </div>
+              )}
+
+              {legalModalTab === 'dpdpa' && (
+                <div className="space-y-5 pt-2">
+                  <div className="border-l-4 border-red-600 bg-red-50/60 p-4 rounded-r-xl text-xs text-red-950">
+                    <p className="font-bold text-sm text-red-900 mb-1">DPDPA 2023 Statutory Readiness</p>
+                    <p>VahanCRM is architected around the statutory mandates of the Digital Personal Data Protection Act, 2023 and DPDP Rules, 2025. Every workshop using our system automatically complies with Indian customer data protection guidelines.</p>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="p-3.5 rounded-xl border border-slate-200 bg-white">
+                      <h4 className="font-bold text-slate-900 text-xs">• Section 5 Notice Compliance</h4>
+                      <p className="text-xs text-slate-600 mt-1">Unambiguous, itemized service notices detailing why customer phone numbers and vehicle photos were registered, along with an instant opt-out toggle.</p>
+                    </div>
+                    <div className="p-3.5 rounded-xl border border-slate-200 bg-white">
+                      <h4 className="font-bold text-slate-900 text-xs">• Zero Cross-Garage Data Leakage</h4>
+                      <p className="text-xs text-slate-600 mt-1">Multi-tenant isolation ensures customer records registered by one workshop are cryptographically isolated from all others.</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="px-6 py-4 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <span className="text-slate-500">
+                Official Grievance Desk: <a href="mailto:privacy@vahancrm.in" className="text-red-600 hover:underline font-medium">privacy@vahancrm.in</a> • +91 97913 88549
+              </span>
+              <button
+                type="button"
+                onClick={() => setLegalModalOpen(false)}
+                className="w-full sm:w-auto px-5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all"
+              >
+                I Understand &amp; Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
